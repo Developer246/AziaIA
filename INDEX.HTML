@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>aziaIA - Asistente de Voz</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    button {
+      background-color: #00bcd4;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0097a7;
+    }
+  </style>
+</head>
+<body>
+  <h1>👾 aziaIA</h1>
+  <p>Tu asistente de voz inteligente con ChatGPT</p>
+  <button onclick="hablar()">Hablar con aziaIA</button>
+
+  <script>
+    function hablar() {
+      fetch('/escuchar', {
+        method: 'POST'
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("aziaIA dice: " + data.respuesta);
+      })
+      .catch(error => {
+        alert("Error al conectar con aziaIA");
+        console.error(error);
+      });
+    }
+  </script>
+</body>
+</html>
+
